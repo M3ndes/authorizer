@@ -41,7 +41,7 @@ class Database
             }
             continue;
         }
-        return array_pop($operations);
+        return (array_pop($operations)) ?? (object)[];
     }
 
     public static function verifySmallInterval($currentTransaction)

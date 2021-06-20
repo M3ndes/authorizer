@@ -7,4 +7,4 @@ while (!$file->eof()) {
     $operation->create();
 }
 echo '<pre>';
-echo(json_encode(Database::$data, JSON_PRETTY_PRINT));
+echo (json_encode(Database::$data, JSON_PRETTY_PRINT));

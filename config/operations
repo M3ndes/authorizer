@@ -1,5 +1,7 @@
-{"account": {"active-card": true, "available-limit": 1000}}
-{"transaction": {"merchant": "Vivara", "amount": 1250, "time": "2019-02-13T11:00:00.000Z"}}
-{"transaction": {"merchant": "Samsung", "amount": 2500, "time": "2019-02-13T11:00:01.000Z"}}
-{"transaction": {"merchant": "Nike", "amount": 800, "time": "2019-02-13T11:01:01.000Z"}}
-{"transaction": {"merchant": "Uber", "amount": 80, "time": "2019-02-13T11:01:31.000Z"}}
+{"transaction": {"merchant": "Uber Eats", "amount": 25, "time": "2020-12-01T11:07:00.000Z"}}
+{"account": {"active-card": true, "available-limit": 100}}
+{"transaction": {"merchant": "Uber Eats", "amount": 25, "time": "2020-12-01T11:07:00.000Z"}}
+{"transaction": {"merchant": "Uber Eatss", "amount": 25, "time": "2020-12-01T11:07:00.000Z"}}
+{"transaction": {"merchant": "Uber Eatsss", "amount": 25, "time": "2020-12-01T11:07:00.000Z"}}
+{"transaction": {"merchant": "Uber Eatsssss", "amount": 25, "time": "2020-12-01T11:07:00.000Z"}}
+{"transaction": {"merchant": "Uber Eatssssss", "amount": 25, "time": "2020-12-01T13:07:00.000Z"}}

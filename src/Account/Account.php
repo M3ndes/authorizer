@@ -11,7 +11,7 @@ class Account
 
     public function create()
     {
-        if (!$this->wasCreated()) {
+        if (!$this->wasInitialized()) {
             $this->account->account->violations = [];
             return $this->account;
         } else {
@@ -19,15 +19,47 @@ class Account
         }
     }
 
-    private function wasCreated()
+    public function wasInitialized()
     {
         return Database::fisrt('account') != null ? true : false;
     }
 
-    private function alreadyinitialized()
+    public function alreadyinitialized()
     {
         $instance = unserialize(serialize(Database::fisrt('account')));
         $instance->account->violations = ['account-already-initialized'];
+        return $instance;
+    }
+
+    public function notInitialized()
+    {
+        $object = new stdClass();
+        $object->account = (object)[];
+        $object->violations = ['account-not-initialized'];
+        return $object;
+    }
+
+    public function isCardActive()
+    {
+        return Database::last('account')->account->{'active-card'} == true ? true : false;
+    }
+
+    public function cardNotActive()
+    {
+        $instance = unserialize(serialize(Database::last('account')));
+        $instance->account->violations = ['card-not-active'];
+        return $instance;
+    }
+
+    public function haveLimit($transactionAmount)
+    {
+        return Database::last('account')->account->{'available-limit'} >= $transactionAmount ? true : false;
+    }
+
+    public function insufficientLimit()
+    {
+        $instance = unserialize(serialize(Database::last('account')));
+        $instance->account->violations = ['insufficient-limit'];
         return $instance;
     }
 }
