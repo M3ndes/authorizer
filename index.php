@@ -1,25 +1,10 @@
 <?php
-
 require "config/autoload.php";
+$file = new SplFileObject("config/operations");
 
-$operations = new SplFileObject("config/operations");
-$output = array();
-
-while (!$operations->eof()) {
-    $operation = json_decode($operations->fgets());
-
-    if ($operation) {
-        if (property_exists($operation, 'account')) {
-            $account = new Account($operation, $output);
-            array_push($output, $account->create());
-        } elseif (property_exists($operation, 'transaction')) {
-           /*  $transaction = new Transaction($operation); */
-        } else {
-            array_push($output, 'operation-not-defined');
-        }
-    }
+while (!$file->eof()) {
+    $operation = new Operation($file->fgets());
+    $operation->create();
 }
 echo '<pre>';
-var_dump(json_encode($output)); 
-die();
-$operations = null;
+echo(json_encode(Database::$data, JSON_PRETTY_PRINT));

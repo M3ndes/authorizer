@@ -3,25 +3,32 @@
 class Account
 {
     private $account;
-    private $output;
 
-    public function __construct(stdClass $account, array $output)
+    public function __construct(stdClass $account)
     {
         $this->account = $account;
-        $this->output = $output;
     }
 
     public function create()
     {
-        $this->wasCreated();
-        return $this->account;
+        if (!$this->wasCreated()) {
+            $this->account->account->violations = [];
+            return $this->account;
+        } else {
+            return $this->alreadyinitialized();
+        }
     }
 
     private function wasCreated()
     {
-        array_column($this->output, 'account') != null ?
-            $this->account->violations = ['account-already-initialized'] :
-            $this->account->violations = [];
-        return;
+        return Database::fisrt('account') != null ? true : false;
     }
+
+    private function alreadyinitialized()
+    {
+        $instance = unserialize(serialize(Database::fisrt('account')));
+        $instance->account->violations = ['account-already-initialized'];
+        return $instance;
+    }
+
 }
