@@ -10,33 +10,18 @@ class Database
         $source == 'data' ? array_push(Database::$data, $data) : array_push(Database::$transactions, $data);
     }
 
-    public static function get($type)
-    {
-        $operations = [];
-        foreach (Database::$data as $operation) {
-            if ((isset($operation->$type))) {
-                if (isset($operation->$type->violations)) {
-                    if ($operation->$type->violations == []) {
-                        array_push($operations, $operation);
-                    }
-                }
-            }
-            continue;
-        }
-        return $operations;
-    }
-
     public static function fisrt($type)
     {
         foreach (Database::$data as $operation) {
-            if ((isset($operation->$type))) {
-                if (isset($operation->$type->violations)) {
-                    if ($operation->$type->violations == []) {
-                        return $operation;
-                    }
-                }
+            if (!(isset($operation->$type))) {
+                continue;
             }
-            continue;
+            if (!isset($operation->$type->violations)) {
+                continue;
+            }
+            if ($operation->$type->violations == []) {
+                return $operation;
+            }
         }
         return null;
     }
@@ -45,12 +30,14 @@ class Database
     {
         $operations = [];
         foreach (Database::$data as $operation) {
-            if ((isset($operation->$type))) {
-                if (isset($operation->$type->violations)) {
-                    if ($operation->$type->violations == []) {
-                        array_push($operations, $operation);
-                    }
-                }
+            if (!(isset($operation->$type))) {
+                continue;
+            }
+            if (!isset($operation->$type->violations)) {
+                continue;
+            }
+            if ($operation->$type->violations == []) {
+                array_push($operations, $operation);
             }
             continue;
         }
