@@ -48,7 +48,7 @@ class Database
     {
         $transactionsArray = [];
         foreach (Database::$transactions as $transaction) {
-            if ((date_diff(date_create($transaction->transaction->time), date_create($currentTransaction->transaction->time))->i) <= 2) {
+            if (Date::getMinutesDifference($transaction->transaction->time, $currentTransaction->transaction->time) <= 2) {
                 array_push($transactionsArray, $transaction);
             }
         }
@@ -59,10 +59,13 @@ class Database
     {
         $transactionsArray = [];
         foreach (Database::$transactions as $transaction) {
-            if (($transaction->transaction->merchant == $currentTransaction->transaction->merchant) &&
-                ($transaction->transaction->amount == $currentTransaction->transaction->amount) &&
-                ((date_diff(date_create($transaction->transaction->time), date_create($currentTransaction->transaction->time))->i) <= 2)
-            ) {
+            if (!$transaction->transaction->merchant == $currentTransaction->transaction->merchant) {
+                continue;
+            }
+            if (!$transaction->transaction->amount == $currentTransaction->transaction->amount) {
+                continue;
+            }
+            if (Date::getMinutesDifference($transaction->transaction->time, $currentTransaction->transaction->time) <= 2) {
                 array_push($transactionsArray, $transaction);
             }
         }
