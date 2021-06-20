@@ -30,5 +30,4 @@ class Account
         $instance->account->violations = ['account-already-initialized'];
         return $instance;
     }
-
 }
