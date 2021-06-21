@@ -59,10 +59,10 @@ class Database
     {
         $transactionsArray = [];
         foreach (Database::$transactions as $transaction) {
-            if (!$transaction->transaction->merchant == $currentTransaction->transaction->merchant) {
+            if ($transaction->transaction->merchant != $currentTransaction->transaction->merchant) {
                 continue;
             }
-            if (!$transaction->transaction->amount == $currentTransaction->transaction->amount) {
+            if ($transaction->transaction->amount != $currentTransaction->transaction->amount) {
                 continue;
             }
             if (Date::getMinutesDifference($transaction->transaction->time, $currentTransaction->transaction->time) <= 2) {
