@@ -1,7 +1,10 @@
 <?php
 
-require "./src/Account/Account.php";
-require "./src/Database/Database.php";
-require "./src/Support/Date.php";
-require "./src/Operation/Operation.php";
-require "./src/Transaction/Transaction.php";
+require_once __DIR__ . '/../src/Account/Account.php';
+require_once __DIR__ . '/../src/Database/Database.php';
+require_once __DIR__ . '/../src/Support/Date.php';
+require_once __DIR__ . '/../src/Operation/Operation.php';
+require_once __DIR__ . '/../src/Transaction/Transaction.php';
+require_once __DIR__ . '/../tests/TestCase/TestCase.php';
+require_once __DIR__ . '/../tests/AccountTest/AccountTest.php';
+require_once __DIR__ . '/../tests/TransactionTest/TransactionTest.php';

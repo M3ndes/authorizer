@@ -2,29 +2,32 @@
 
 class Operation
 {
-    private $operation;
+    private $file;
 
-    public function __construct(string $operation)
+    public function __construct(string $file)
     {
-        $this->operation = json_decode($operation);
+        $this->file = new SplFileObject($file);
     }
 
-    public function create()
+    public function readFile()
     {
-        if ($this->isMethod('account')) {
-            $account = new Account($this->operation);
+        while (!$this->file->eof()) {
+            $this->create(json_decode($this->file->fgets()));
+        }
+        return;
+    }
+
+    public function create($operation)
+    {
+        if (property_exists($operation, 'account')) {
+            $account = new Account($operation);
             Database::create($account->create(), 'data');
-        } elseif ($this->isMethod('transaction')) {
-            $transaction = new Transaction($this->operation);
+        } elseif (property_exists($operation, 'transaction')) {
+            $transaction = new Transaction($operation);
             Database::create($transaction->create(), 'data');
         } else {
             Database::create('operation-not-defined', 'data');
         }
         return;
-    }
-
-    private function isMethod($string)
-    {
-        return property_exists($this->operation, $string);
     }
 }
