@@ -19,7 +19,7 @@
 
 This project is about an application that authorizes transactions for a specific account following a series of predefined rules.
 
-Read this in other language: Português(README.pt-BR)
+Read this in other language: [Português](README.pt-BR)
 # Development
 
 Below is what was used in the development of this project:
