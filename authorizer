@@ -1,0 +1,24 @@
+<?php
+require_once __DIR__ . '/config/autoload.php';
+
+$args = array_slice($argv, 1);
+
+if (count($args) === 0) {
+    $args[0] = 'help';
+}
+
+switch ($args[0]) {
+    case 'run':
+        Core::run(__DIR__ . '/operations', true);
+        break;
+    case 'test':
+        Core::tests();
+        break;
+    default:
+        echo 'nubank-challenge', PHP_EOL;
+        echo 'Uso: [php] [argumento]', PHP_EOL;
+        echo 'Comandos disponiveis:', PHP_EOL;
+        echo 'run             Inicia a aplicação', PHP_EOL;
+        echo 'test            Executa os testes da aplicação', PHP_EOL;
+        break;
+}

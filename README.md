@@ -43,7 +43,14 @@ docker build -t my-php-app .
 ```
 
 ```shell=
-docker run -it --rm --name my-running-app my-php-app
+docker run -it my-php-app php authorizer run
+
+```
+### Tests
+To run the application tests, simply navigate to the root folder and execute the following command:
+
+```shell=
+docker run -it my-php-app php authorizer test
 ```
 
 ### 2. Without Docker
@@ -52,16 +59,14 @@ docker run -it --rm --name my-running-app my-php-app
 To run the application, simply navigate to the root folder and execute the following command:
 
 ```shell=
-php index.php
+php authorizer run
 ```
 
 ### Tests
-To run the application tests, simply navigate to the root folder and execute the following commands:
+To run the application tests, simply navigate to the root folder and execute the following command:
+
 ```shell=
-cd tests
-```
-```shell=
-php test.php
+php authorizer test
 ```
 
 # Project structure

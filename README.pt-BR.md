@@ -42,7 +42,14 @@ docker build -t my-php-app .
 ```
 
 ```shell=
-docker run -it --rm --name my-running-app my-php-app
+docker run -it my-php-app php authorizer run
+
+```
+### Testes
+Para executar os testes da aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
+
+```shell=
+docker run -it my-php-app php authorizer test
 ```
 
 ### 2. Sem Docker
@@ -51,23 +58,21 @@ docker run -it --rm --name my-running-app my-php-app
 Para executar a aplicação basta navegar até a pasta raiz e executar o seguinte comando:
 
 ```shell=
-php index.php
+php authorizer run
 ```
 
 ### Testes
 Para executar os testes da aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
+
 ```shell=
-cd tests
-```
-```shell=
-php test.php
+php authorizer test
 ```
 
 # Estrutura do projeto
 
 - **src** - Diretório base que contém as classes necessárias para o funcionamento da aplicação;
     - **Account** - Diretório responsável por armazenar classes que manipulem operações do tipo conta;
-    - **Database** - Diretório responsável por armazenar classes que manipulem o estado da operação, gerenciado o mesmo em memória;
+    - **Database** - Diretório responsável por armazenar classes que manipulem o estado da operação, gerenciando o mesmo em memória;
     - **Operation** - Diretório responsável por armazenar classes que gerenciem operações, independente do tipo;
     - **Support** - Diretório responsável por armazenar classes com funcionalidades comuns, mas que não tenham designação especial na arquitetura geral da aplicação;
    - **Account** - Diretório responsável por armazenar classes que manipulem operações do tipo transação;

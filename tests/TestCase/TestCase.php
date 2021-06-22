@@ -2,11 +2,11 @@
 
 class TestCase
 {
-    public function callOperation($operation)
+    private $output;
+
+    public function __construct()
     {
-        $operation = new Operation(__DIR__ . "$operation");
-        $operation->readFile();
-        return;
+        $this->output = json_encode(Database::$data);
     }
 
     public function clear()
@@ -16,39 +16,36 @@ class TestCase
         return;
     }
 
+    protected function recieveArray($array)
+    {
+        $this->endTest($array['expectedOutput'] == $this->output ? $array['message'] . ' [OK]' : $array['message'] . ' [FAILED]');
+        return;
+    }
+
+    public function runTests(InterfaceTest $class)
+    {
+        foreach ($class::tests() as $test) {
+            Core::run($test['file']);
+            $this->output = json_encode(Database::$data);
+            $this->recieveArray($test);
+        }
+        return;
+    }
+    protected function endTest($return)
+    {
+        echo $return, PHP_EOL;
+        $this->clear();
+        return;
+    }
+
     public function Account()
     {
-        $this->callOperation('/../operationsTest/createAccountTest');
-        $accountTest = new AccountTest();
-        $accountTest->create();
-
-        $this->callOperation('/../operationsTest/accountNotInitializedTest');
-        $accountTest = new AccountTest();
-        $accountTest->notInitialized();
-
-        $this->callOperation('/../operationsTest/cardNotActiveTest');
-        $accountTest = new AccountTest();
-        $accountTest->cardNotActive();
-
-        $this->callOperation('/../operationsTest/insufficientLimitTest');
-        $accountTest = new AccountTest();
-        $accountTest->insufficientLimit();
+        $this->runTests(new AccountTest());
         return;
     }
 
     public function Transaction()
     {
-        $this->callOperation('/../operationsTest/createTransactionTest');
-        $transactionTest = new TransactionTest();
-        $transactionTest->create();
-
-        $this->callOperation('/../operationsTest/highFrequencySmallIntervalTest');
-        $transactionTest = new TransactionTest();
-        $transactionTest->highFrequencySmallInterval();
-
-        $this->callOperation('/../operationsTest/doubleTransactionTest');
-        $transactionTest = new TransactionTest();
-        $transactionTest->doubleTransaction();
-        return;
+        $this->runTests(new TransactionTest());
     }
 }
