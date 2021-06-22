@@ -21,7 +21,7 @@ Este projeto se trata de uma aplicação que autoriza transações para uma cont
 
 # Desenvolvimento
 
-Abaixo segue o que foi utilizado no desenvolvimento desse projeto:
+Abaixo segue o que foi utilizado no desenvolvimento deste projeto:
 
 - [PHP](https://www.php.net/) - PHP é uma linguagem interpretada livre, usada originalmente apenas para o desenvolvimento de aplicações presentes e atuantes no lado do servidor;
 - [Docker](https://www.docker.com/) - Docker é um conjunto de produtos de plataforma como serviço que usam virtualização de nível de sistema operacional para entregar software em pacotes chamados contêineres;
@@ -55,7 +55,7 @@ php index.php
 ```
 
 ### Testes
-Para executar a aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
+Para executar os testes da aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
 ```shell=
 cd tests
 ```

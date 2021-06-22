@@ -2,40 +2,41 @@
 
 <!-- TABLE OF CONTENTS -->
 
-# Autorizador
+# Authorizer
 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Desenvolvimento](#desenvolvimento)
-- [Começando](#começando)
-  - [Pré-requisitos](#pr%C3%A9-requisitos)
-  - [Rodando o projeto](#rodando-o-projeto)
-      - [Com Docker](#com-docker)
-      - [Sem Docker](#sem-docker)
-- [Estrutura do projeto](#estrutura-do-projeto)
+- [About the project](#About-the-project)
+- [Development](#Development)
+- [Getting Started](#Getting-Started)
+  - [Prerequisites](#Prerequisites)
+  - [Running the project](#running-the-project)
+      - [With Docker](#With-docker)
+      - [Without Docker](#Without-docker)
+- [Project structure](#Project-structure)
 
 <!-- ABOUT THE PROJECT -->
 
-# Sobre o Projeto
+# About the project
 
-Este projeto se trata de uma aplicação que autoriza transações para uma conta específica seguindo uma série de regras predefinidas.
+This project is about an application that authorizes transactions for a specific account following a series of predefined rules.
 
-# Desenvolvimento
+Read this in other language: Português(README.pt-BR)
+# Development
 
-Abaixo segue o que foi utilizado no desenvolvimento desse projeto:
+Below is what was used in the development of this project:
 
-- [PHP](https://www.php.net/) - PHP é uma linguagem interpretada livre, usada originalmente apenas para o desenvolvimento de aplicações presentes e atuantes no lado do servidor;
-- [Docker](https://www.docker.com/) - Docker é um conjunto de produtos de plataforma como serviço que usam virtualização de nível de sistema operacional para entregar software em pacotes chamados contêineres;
+- [PHP](https://www.php.net/) - PHP is a free interpreted language, originally used only for the development of server-side applications;
+- [Docker](https://www.docker.com/) - Docker is a set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.;
 
 <!-- GETTING STARTED -->
 
-# Começando
+# Getting Started
 
-## Pré-requisitos
-Para rodar o projeto é necessário ter o [docker](https://www.docker.com/) instalado, ou caso queria rodar sem um container o [PHP](https://www.php.net/) será necessário.
+## Prerequisites
+To run the project you need to have [docker](https://www.docker.com/) installed, or if you want to run without a container, [PHP](https://www.php.net/) will be needed.
 
-## Rodando o projeto
-### 1. Com Docker
-Para executar a aplicação utilizando docker basta navegar até a pasta raiz e executar os seguintes comando:
+## Running the project
+### 1. With Docker
+To run the application using docker just navigate to the root folder and execute the following command:
 
 ```shell=
 docker build -t my-php-app .
@@ -45,17 +46,17 @@ docker build -t my-php-app .
 docker run -it --rm --name my-running-app my-php-app
 ```
 
-### 2. Sem Docker
+### 2. Without Docker
 
-### Execução
-Para executar a aplicação basta navegar até a pasta raiz e executar o seguinte comando:
+### Execution
+To run the application, simply navigate to the root folder and execute the following command:
 
 ```shell=
 php index.php
 ```
 
-### Testes
-Para executar a aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
+### Tests
+To run the application tests, simply navigate to the root folder and execute the following commands:
 ```shell=
 cd tests
 ```
@@ -63,18 +64,18 @@ cd tests
 php test.php
 ```
 
-# Estrutura do projeto
+# Project structure
 
-- **src** - Diretório base que contém as classes necessárias para o funcionamento da aplicação;
-    - **Account** - Diretório responsável por armazenar classes que manipulem operações do tipo conta;
-    - **Database** - Diretório responsável por armazenar classes que manipulem o estado da operação, gerenciado o mesmo em memória;
-    - **Operation** - Diretório responsável por armazenar classes que gerenciem operações, independente do tipo;
-    - **Support** - Diretório responsável por armazenar classes com funcionalidades comuns, mas que não tenham designação especial na arquitetura geral da aplicação;
-   - **Account** - Diretório responsável por armazenar classes que manipulem operações do tipo transação;
+- **src** - Base directory that contains the classes necessary for the application operation;
+    - **Account** - Directory responsible for storing classes that handle account type operations;
+    - **Database** - Directory responsible for storing classes that handle the state of the operation, managed in memory;
+    - **Operation** - Directory responsible for storing classes that manage operations, regardless of type;
+    - **Support** - Directory responsible for storing classes with common functionality, but that do not have special designation in the general architecture of the application;
+   - **Account** - Directory responsible for storing classes that handle transaction-type operations;
  
-- **tests** - Diretório responsável por armazenar as classes necessárias para realizar os testes da aplicação;
-    - **AccountTest** - Diretório responsável por armazenar classes que manipulem testes em operações do tipo conta;
-    - **operationsTest** - Diretório responsável por armazenar todos os arquivos de operações utilizados nas classes de teste da aplicação;
-    - **TestCase** - Diretório responsável por armazenar todas as classes que gerenciem os casos de testes da aplicação;
-    - **TransactionTest** - Diretório responsável por armazenar classes que manipulem testes em operações do tipo transação;
+- **tests** - Directory responsible for storing the classes needed to perform application tests;
+    - **AccountTest** - Directory responsible for storing classes that handle tests in account type operations;
+    - **operationsTest** - Directory responsible for storing all operations files used in the application's test classes;
+    - **TestCase** - Directory responsible for storing all classes that manage application test cases;
+    - **TransactionTest** - Directory responsible for storing classes that handle tests in transaction-type operations;
     
