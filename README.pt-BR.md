@@ -35,7 +35,7 @@ Para rodar o projeto é necessário ter o [docker](https://www.docker.com/) inst
 
 ## Rodando o projeto
 ### 1. Com Docker
-Para executar a aplicação utilizando docker basta navegar até a pasta raiz e executar os seguintes comando:
+Para executar a aplicação utilizando docker basta navegar até a pasta raiz e executar os seguintes comandos:
 
 ```shell=
 docker build -t my-php-app .
@@ -46,7 +46,7 @@ docker run -it my-php-app php authorizer run
 
 ```
 ### Testes
-Para executar os testes da aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
+Para executar os testes da aplicação basta navegar até a pasta raiz e executar o seguinte comando:
 
 ```shell=
 docker run -it my-php-app php authorizer test
@@ -62,7 +62,7 @@ php authorizer run
 ```
 
 ### Testes
-Para executar os testes da aplicação basta navegar até a pasta raiz e executar os seguintes comandos:
+Para executar os testes da aplicação basta navegar até a pasta raiz e executar o seguinte comando:
 
 ```shell=
 php authorizer test
